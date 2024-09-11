@@ -11,7 +11,7 @@ Content-Type: application/json
 }
 
 ### GET USER 1
-GET http://localhost:5001/users/e204b035-263b-4126-8c29-e8c74eef5153
+GET http://localhost:5001/users/3fd21d58-516f-4323-9da0-998f5b9180fc
 
 ### LOGIN USER 1
 POST http://localhost:5001/security/login
@@ -24,7 +24,7 @@ Content-Type: application/json
 
 ### TRY Token Bearer USER 1 (ADMIN ONLY)
 GET http://localhost:5001/users/
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiJlMjA0YjAzNS0yNjNiLTQxMjYtOGMyOS1lOGM3NGVlZjUxNTMiLCJmdWxsTmFtZSI6InRvbTEwMCBUb20xMDAiLCJpYXQiOjE3MTc3NTE1ODh9.Lzgmd673JxNjWUPRLU5-wqBgWyQ75IFDpfu6Pnj4N1A
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiIzZmQyMWQ1OC01MTZmLTQzMjMtOWRhMC05OThmNWI5MTgwZmMiLCJmdWxsTmFtZSI6InRvbTEwMCBUb20xMDAiLCJpYXQiOjE3MjYwODgzMjJ9.fR0UzLrGID27KxmpTj9Jyhk7wQVYb8cKNAInfwBn40k
 
 ### REGISTER USER 2
 POST http://localhost:5001/users
@@ -39,7 +39,7 @@ Content-Type: application/json
 }
 
 ### GET USER 2
-GET http://localhost:5001/users/07268c85-3f6f-40c1-8a11-f03763ae7f3e
+GET http://localhost:5001/users/22c40581-3b14-4cf9-879f-4ed2fb69251c
 
 ### LOGIN USER 2
 POST http://localhost:5001/security/login
@@ -52,4 +52,4 @@ Content-Type: application/json
 
 ### TRY Token Bearer USER 2 (ADMIN ONLY)
 GET http://localhost:5001/users/
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiIwNzI2OGM4NS0zZjZmLTQwYzEtOGExMS1mMDM3NjNhZTdmM2UiLCJmdWxsTmFtZSI6InRvbTEwMSBUb20xMDEiLCJpYXQiOjE3MTc3NTE2NTR9.lFmkYJt68jH2DPg5NlA5aOXX9y0tQ6z-1-wY8Zqxzgg
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiIyMmM0MDU4MS0zYjE0LTRjZjktODc5Zi00ZWQyZmI2OTI1MWMiLCJmdWxsTmFtZSI6InRvbTEwMSBUb20xMDEiLCJpYXQiOjE3MjYwODgzNjl9.bOjKEAe523hmKCDcRhF8f90JzzOphJUzvHY6NAkXMoQ
