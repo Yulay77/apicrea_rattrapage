@@ -1,0 +1,23 @@
+Logique de plateau
+    Mise en place du board (board.js)
+    Verifier les conditions de victoire (board.js)
+    Laisser la partie continuer (board.js)
+    Afficher le draw (board.js)
+Logique de mouvement 
+    Permettre au joueur de jouer (/controller)
+    Verifier si la case est libre (/middleware ?)
+    Ajouter la mark au board (/controller)
+    Séparé les joueur par user (/controller /middleware)
+
+Requete:
+
+board: affiche le tableau de jeu
+
+
+
+Ne pas oublier de mettre les middlewares : 
+- Format
+- version
+- hateoas
+- langues
+

@@ -1,0 +1,55 @@
+### REGISTER USER 1
+POST http://localhost:5001/users
+Content-Type: application/json
+
+{
+    "lastname": "Tom100",
+    "firstname": "tom100",
+    "email": "tom100@tom.com",
+    "password": "Azerty123456!",
+    "role": "admin"
+}
+
+### GET USER 1
+GET http://localhost:5001/users/e204b035-263b-4126-8c29-e8c74eef5153
+
+### LOGIN USER 1
+POST http://localhost:5001/security/login
+Content-Type: application/json
+
+{
+    "email": "tom100@tom.com",
+    "password": "Azerty123456!"
+}
+
+### TRY Token Bearer USER 1 (ADMIN ONLY)
+GET http://localhost:5001/users/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiJlMjA0YjAzNS0yNjNiLTQxMjYtOGMyOS1lOGM3NGVlZjUxNTMiLCJmdWxsTmFtZSI6InRvbTEwMCBUb20xMDAiLCJpYXQiOjE3MTc3NTE1ODh9.Lzgmd673JxNjWUPRLU5-wqBgWyQ75IFDpfu6Pnj4N1A
+
+### REGISTER USER 2
+POST http://localhost:5001/users
+Content-Type: application/json
+
+{
+    "lastname": "Tom101",
+    "firstname": "tom101",
+    "email": "tom101@tom.com",
+    "password": "Azerty123456!",
+    "role": "admin"
+}
+
+### GET USER 2
+GET http://localhost:5001/users/07268c85-3f6f-40c1-8a11-f03763ae7f3e
+
+### LOGIN USER 2
+POST http://localhost:5001/security/login
+Content-Type: application/json
+
+{
+    "email": "tom101@tom.com",
+    "password": "Azerty123456!"
+}
+
+### TRY Token Bearer USER 2 (ADMIN ONLY)
+GET http://localhost:5001/users/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiIwNzI2OGM4NS0zZjZmLTQwYzEtOGExMS1mMDM3NjNhZTdmM2UiLCJmdWxsTmFtZSI6InRvbTEwMSBUb20xMDEiLCJpYXQiOjE3MTc3NTE2NTR9.lFmkYJt68jH2DPg5NlA5aOXX9y0tQ6z-1-wY8Zqxzgg

@@ -1,0 +1,15 @@
+{
+	"game.gameNotFound": "The game you are looking for does not exist.",
+	"game.gameFull": "The game you are trying to join is full.",
+	"game.gameJoined": "You have joined the game.",
+	"game.allGamesDeleted": "All games have been deleted.",
+	"game.gameEnded": "The game has been closed.",
+	"game.gameMakeMoveNotFound": "The game you are trying to make a move in does not exist.",
+	"game.gameNotAPlayer": "You are not a player of this game.",
+	"game.waitingAnotherPlayer": "Waiting for another player.",
+	"game.gameNotYourTurn": "It is not your turn.",
+	"game.moveAlreadyMade": "That move has already been made.",
+	"game.winner": "The last player to move has won the game!",
+	"game.moveMade": "Move made successfully.",
+	"game.notAutorizedDeleteGame": "You are not authorized to delete this game."
+}

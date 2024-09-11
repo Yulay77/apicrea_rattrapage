@@ -1,0 +1,15 @@
+{
+    "game.gameNotFound": "La partie n'a pas été trouvée.",
+    "game.gameFull": "La partie est pleine.",
+    "game.gameJoined": "Vous avez rejoint la partie.",
+    "game.allGamesDeleted": "Toutes les parties ont été supprimées.",
+    "game.notAuthorizedDeleteGame": "Vous n'êtes pas autorisé à supprimer cette partie.",
+    "game.gameEnded": "La partie a été cloturée.",
+    "game.gameMakeMoveNotFound": "La partie n'a pas été trouvée. Soit elle n'existe pas, soit elle a été supprimée.",
+    "game.gameNotAPlayer": "Vous n'êtes pas un joueur de cette partie.",
+    "game.waitingAnotherPlayer": "En attente d'un autre joueur.",
+    "game.gameNotYourTurn": "Ce n'est pas votre tour.",
+    "game.moveAlreadyMade": "Ce coup a déjà été joué.",
+    "game.winner": "Le dernier joueur a avoir joué a gagné la partie !",
+    "game.moveMade": "Mouvement effectué avec succès."
+}
