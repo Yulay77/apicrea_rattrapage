@@ -14,32 +14,64 @@ module.exports = {
           player2: null,
         },
       });
-      res.json(gamesFound);
+      const gamesWithLinks = gamesFound.map((game) => {
+        return {
+          id: game.id,
+          player1: game.player1,
+          board: game.board,
+          currentTurn: game.currentTurn,
+          _links: {
+            self: {
+              href: `/games/${game.id}`,
+            },
+            createGame: {
+              href: `/games`,
+              method: "POST",
+            },
+          },
+        };
+      });
+      res.json(gamesWithLinks);
     } catch (error) {
       next(error);
     }
   },
   createGame: async (req, res, next) => {
     try {
-      const creatorId = req.body.creatorId; 
-      const gameId = generateGameId(); 
+      const creatorId = req.body.creatorId;
+      const gameId = generateGameId();
       const newGame = {
         id: gameId,
-        player1: creatorId, 
-        board: [" ", " ", " ", " ", " ", " ", " ", " ", " "], 
+        player1: creatorId,
+        board: [" ", " ", " ", " ", " ", " ", " ", " ", " "],
         currentTurn: creatorId,
       };
       activeGames[gameId] = newGame;
       await Game.create(newGame); // Ajouter la nouvelle partie à la base de données
-      res.status(201).json(newGame); // Envoyer la nouvelle partie au client
+      const gameWithLinks = {
+        id: gameId,
+        player1: creatorId,
+        board: newGame.board,
+        currentTurn: creatorId,
+        _links: {
+          self: {
+            href: `/games/${gameId}`,
+          },
+          joinGame: {
+            href: `/games/${gameId}/join`,
+            method: "PUT",
+          },
+        },
+      };
+      res.status(201).json(gameWithLinks); // Envoyer la nouvelle partie au client
     } catch (error) {
       next(error);
     }
   },
   joinGame: async (req, res, next) => {
     try {
-      const gameId = req.params.gameId; // Récupérez gameId à partir des paramètres de la requête
-      const playerId = req.body.playerId; // Récupérez playerId à partir du corps de la requête
+      const gameId = req.params.gameId;
+      const playerId = req.body.playerId;
 
       // Recherchez la partie par son ID
       const game = await Game.findByPk(gameId);
@@ -83,10 +115,26 @@ module.exports = {
           }
         );
 
-        activeGames[gameId].currentTurn = game.player1; 
+        activeGames[gameId].currentTurn = game.player1;
       }
+      const gameWithLinks = {
+        id: gameId,
+        player1: game.player1,
+        player2: game.player2,
+        board: game.board,
+        currentTurn: game.currentTurn,
+        _links: {
+          self: {
+            href: `/games/${gameId}`,
+          },
+          makeMove: {
+            href: `/games/${gameId}/moves`,
+            method: "POST",
+          },
+        },
+      };
       gameJoined = i18n.__({ phrase: 'game.gameJoined', locale: req.locale });
-      res.json(gameJoined);
+      res.json(gameWithLinks);
     } catch (error) {
       next(error);
     }

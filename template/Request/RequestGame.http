@@ -1,4 +1,4 @@
-### creer une partie
+### creer une partie + Hateoas
 POST http://localhost:5001/game/create
 Content-Type: application/json
 Accept-Language: en
@@ -8,20 +8,20 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiIzZmQyM
     "creatorId":"3fd21d58-516f-4323-9da0-998f5b9180fc"
 }
 
-### Voir les parties en cours
+### Voir les parties en cours + Hateoas
 GET http://localhost:5001/game
 Accept-Language: en
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiIzZmQyMWQ1OC01MTZmLTQzMjMtOWRhMC05OThmNWI5MTgwZmMiLCJmdWxsTmFtZSI6InRvbTEwMCBUb20xMDAiLCJpYXQiOjE3MjYwODgzMjJ9.fR0UzLrGID27KxmpTj9Jyhk7wQVYb8cKNAInfwBn40k
 
 
-##### Supprime toutes les parties en cours (ADMIN ONLY)
+##### Supprime toutes les parties en cours (ADMIN ONLY) 
 DELETE http://localhost:5001/game/delete
 Accept-Language: en
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiIzZmQyMWQ1OC01MTZmLTQzMjMtOWRhMC05OThmNWI5MTgwZmMiLCJmdWxsTmFtZSI6InRvbTEwMCBUb20xMDAiLCJpYXQiOjE3MjYwODgzMjJ9.fR0UzLrGID27KxmpTj9Jyhk7wQVYb8cKNAInfwBn40k
 
 
-### Rejoindre une partie (id de la game dans l'url)
-POST http://localhost:5001/game/join/4811b437-fe8a-4c09-a948-149c4e44b819
+### Rejoindre une partie (id de la game dans l'url) + Hateoas
+POST http://localhost:5001/game/join/9c6f28dd-7ac0-4ff1-be33-e2fc382520dc
 Content-Type: application/json 
 Accept-Language: en
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiIwNzI2OGM4NS0zZjZmLTQwYzEtOGExMS1mMDM3NjNhZTdmM2UiLCJmdWxsTmFtZSI6InRvbTEwMSBUb20xMDEiLCJpYXQiOjE3MTc3NTE2NTR9.lFmkYJt68jH2DPg5NlA5aOXX9y0tQ6z-1-wY8Zqxzgg
@@ -32,29 +32,29 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiIwNzI2O
 
 
 ### Make Move (id game + user 1) 
-POST http://localhost:5001/game/play/4811b437-fe8a-4c09-a948-149c4e44b819
+POST http://localhost:5001/game/play/9c6f28dd-7ac0-4ff1-be33-e2fc382520dc
 Content-Type: application/json
 Accept-Language: en
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiJlMjA0YjAzNS0yNjNiLTQxMjYtOGMyOS1lOGM3NGVlZjUxNTMiLCJmdWxsTmFtZSI6InRvbTEwMCBUb20xMDAiLCJpYXQiOjE3MTc3NTE1ODh9.Lzgmd673JxNjWUPRLU5-wqBgWyQ75IFDpfu6Pnj4N1A
 
 {
     "playerId":"3fd21d58-516f-4323-9da0-998f5b9180fc",
-    "move": 1
+    "move": 2
 }
 
 ### Make Move (id game + user 2)
-POST http://localhost:5001/game/play/4811b437-fe8a-4c09-a948-149c4e44b819
+POST http://localhost:5001/game/play/9c6f28dd-7ac0-4ff1-be33-e2fc382520dc
 Content-Type: application/json
 Accept-Language: en
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiIwNzI2OGM4NS0zZjZmLTQwYzEtOGExMS1mMDM3NjNhZTdmM2UiLCJmdWxsTmFtZSI6InRvbTEwMSBUb20xMDEiLCJpYXQiOjE3MTc3NTE2NTR9.lFmkYJt68jH2DPg5NlA5aOXX9y0tQ6z-1-wY8Zqxzgg
 
 {
     "playerId":"22c40581-3b14-4cf9-879f-4ed2fb69251c",
-    "move": 6
+    "move": 5
 }
 
 ### Terminer une partie (id de la game dans l'url)
-DELETE http://localhost:5001/game/end/4811b437-fe8a-4c09-a948-149c4e44b819
+DELETE http://localhost:5001/game/end/9c6f28dd-7ac0-4ff1-be33-e2fc382520dc
 Content-Type: application/json
 Accept-Language: en
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiJlNjc5MzZmNC1hOWY2LTQzYmMtYTViNy03MzY3YTQ0ZDQ1NmUiLCJmdWxsTmFtZSI6InRvbTE1IFRvbTE1IiwiaWF0IjoxNzE3NzQ5MzQ1fQ.B8HR_OvsM8jOG6mF3uOT8gZ1PTI5lkDNJwdNgw2dT5o
