@@ -12,7 +12,16 @@ router.post("/create", translationMiddleware, checkAuth, (req, res, next) => {
       next(err);
     } else {
       res.location(`/games/${game.id}`);
-      res.json(game);
+      res.json({
+        ...game,
+        _links: {
+          self: { href: `/games/${game.id}` },
+          createGame: { href: `/games`, method: "POST" },
+          joinGame: { href: `/games/${game.id}/join`, method: "PUT" },
+          deleteGame: { href: `/games/${game.id}/end`, method: "DELETE" },
+          play: { href: `/games/${game.id}/play`, method: "POST" }
+        }
+      });
     }
   });
 });
@@ -23,7 +32,16 @@ router.post("/join/:gameId",/* middlewares */ translationMiddleware, checkAuth, 
     if (err) {
       next(err);
     } else {
-      res.json(game);
+      res.json({
+        ...game,
+        _links: {
+          self: { href: `/games/${game.id}` },
+          createGame: { href: `/games`, method: "POST" },
+          joinGame: { href: `/games/${game.id}/join`, method: "PUT" },
+          deleteGame: { href: `/games/${game.id}/end`, method: "DELETE" },
+          play: { href: `/games/${game.id}/play`, method: "POST" }
+        }
+      });
     }
   });
 });
@@ -34,42 +52,71 @@ router.get("", /* middlewares */ translationMiddleware, checkAuth, (req, res, ne
     if (err) {
       next(err);
     } else {
-      res.json(games);
+      res.json({
+        _embedded: games,
+        _links: {
+          self: { href: `/games` },
+          createGame: { href: `/games`, method: "POST" }
+        }
+      });
     }
   });
 });
 
 // Item route : DELETE ALL : delete all games
-router.delete("/delete", /* middlewares */translationMiddleware, checkAuth, checkRole("admin"), (req, res, next) => {
-  GameController.deleteAll(req, res, (err) => {
-    if (err) {
-      next(err);
-    } else {
-      res.json({ message: "Toutes les parties ont été supprimées" });
-    }
+router.delete("/delete", translationMiddleware, (req, res, next) => {
+    GameController.deleteAll(req, res, (err, data) => {
+      if (err) {
+        next(err);
+      } else {
+        res.json({
+          message: "Toutes les parties ont été supprimées",
+          _links: {
+            self: { href: `/games` },
+            createGame: { href: `/games`, method: "POST" },
+            getAllGames: { href: `/games`, method: "GET" }
+          }
+        });
+      }
+    });
   });
-});
-
-// Item route : DELETE : delete a game
-router.delete("/end/:gameId", /* middlewares */ translationMiddleware, checkAuth, (req, res, next) => {
-  GameController.deleteOne(req, res, (err) => {
-    if (err) {
-      next(err);
-    } else {
-      res.json({ message: "La partie a été supprimée" });
-    }
+  
+  // Item route : DELETE : delete a game
+  router.delete("/end/:gameId", translationMiddleware, (req, res, next) => {
+    GameController.deleteOne(req, res, (err, data) => {
+      if (err) {
+        next(err);
+      } else {
+        res.json({
+          message: "La partie a été supprimée",
+          _links: {
+            self: { href: `/games` },
+            createGame: { href: `/games`, method: "POST" },
+            getAllGames: { href: `/games`, method: "GET" }
+          }
+        });
+      }
+    });
   });
-});
-
-// Jouer 
-router.post("/play/:gameId", translationMiddleware, checkAuth, (req, res, next) => {
-  GameController.makeMove(req, res, (err, game) => {
-    if (err) {
-      next(err);
-    } else {
-      res.json(game);
-    }
-  });
-});
+  
+  // Jouer 
+  router.post("/play/:gameId", translationMiddleware, checkAuth, (req, res, next) => {
+    GameController.makeMove(req, res, (err, game) => {
+      if (err) {
+        next(err);
+      } else {
+        res.json({
+          ...game,
+          _links: {
+            self: { href: `/games/${game.id}` },
+            createGame: { href: `/games`, method: "POST" },
+            joinGame: { href: `/games/${game.id}/join`, method: "PUT" },
+            deleteGame: { href: `/games/${game.id}/end`, method: "DELETE" },
+            play: { href: `/games/${game.id}/play`, method: "POST" }
+          }
+        });
+      }
+    });
+  });  
 
 module.exports = router;

@@ -21,7 +21,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiIzZmQyM
 
 
 ### Rejoindre une partie (id de la game dans l'url) + Hateoas
-POST http://localhost:5001/game/join/9c6f28dd-7ac0-4ff1-be33-e2fc382520dc
+POST http://localhost:5001/game/join/57595cfe-e384-4cc0-b0e6-efbd10e7d068
 Content-Type: application/json 
 Accept-Language: en
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiIwNzI2OGM4NS0zZjZmLTQwYzEtOGExMS1mMDM3NjNhZTdmM2UiLCJmdWxsTmFtZSI6InRvbTEwMSBUb20xMDEiLCJpYXQiOjE3MTc3NTE2NTR9.lFmkYJt68jH2DPg5NlA5aOXX9y0tQ6z-1-wY8Zqxzgg
@@ -32,7 +32,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiIwNzI2O
 
 
 ### Make Move (id game + user 1) 
-POST http://localhost:5001/game/play/9c6f28dd-7ac0-4ff1-be33-e2fc382520dc
+POST http://localhost:5001/game/play/57595cfe-e384-4cc0-b0e6-efbd10e7d068
 Content-Type: application/json
 Accept-Language: en
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiJlMjA0YjAzNS0yNjNiLTQxMjYtOGMyOS1lOGM3NGVlZjUxNTMiLCJmdWxsTmFtZSI6InRvbTEwMCBUb20xMDAiLCJpYXQiOjE3MTc3NTE1ODh9.Lzgmd673JxNjWUPRLU5-wqBgWyQ75IFDpfu6Pnj4N1A
@@ -43,7 +43,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiJlMjA0Y
 }
 
 ### Make Move (id game + user 2)
-POST http://localhost:5001/game/play/9c6f28dd-7ac0-4ff1-be33-e2fc382520dc
+POST http://localhost:5001/game/play/57595cfe-e384-4cc0-b0e6-efbd10e7d068
 Content-Type: application/json
 Accept-Language: en
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiIwNzI2OGM4NS0zZjZmLTQwYzEtOGExMS1mMDM3NjNhZTdmM2UiLCJmdWxsTmFtZSI6InRvbTEwMSBUb20xMDEiLCJpYXQiOjE3MTc3NTE2NTR9.lFmkYJt68jH2DPg5NlA5aOXX9y0tQ6z-1-wY8Zqxzgg
@@ -54,7 +54,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiIwNzI2O
 }
 
 ### Terminer une partie (id de la game dans l'url)
-DELETE http://localhost:5001/game/end/9c6f28dd-7ac0-4ff1-be33-e2fc382520dc
+DELETE http://localhost:5001/game/end/57595cfe-e384-4cc0-b0e6-efbd10e7d068
 Content-Type: application/json
 Accept-Language: en
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiJlNjc5MzZmNC1hOWY2LTQzYmMtYTViNy03MzY3YTQ0ZDQ1NmUiLCJmdWxsTmFtZSI6InRvbTE1IFRvbTE1IiwiaWF0IjoxNzE3NzQ5MzQ1fQ.B8HR_OvsM8jOG6mF3uOT8gZ1PTI5lkDNJwdNgw2dT5o

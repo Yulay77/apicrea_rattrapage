@@ -143,9 +143,9 @@ module.exports = {
     try {
       await Game.destroy({
         where: {},
-        truncate: true, // Cette option supprime toutes les lignes et réinitialise les compteurs d'auto-incrémentation
+        truncate: true,
       });
-
+  
       // Réinitialisez l'objet activeGames
       for (let prop in activeGames) {
         if (activeGames.hasOwnProperty(prop)) {
@@ -153,7 +153,19 @@ module.exports = {
         }
       }
       allGamesDeleted = i18n.__({ phrase: 'game.allGamesDeleted', locale: req.locale });
-      res.json(allGamesDeleted);
+      const response = {
+        message: allGamesDeleted,
+        _links: {
+          self: {
+            href: `/games`,
+          },
+          createGame: {
+            href: `/games`,
+            method: "POST",
+          },
+        },
+      };
+      res.json(response);
     } catch (error) {
       next(error);
     }
@@ -175,7 +187,6 @@ module.exports = {
       }
   
       // Vérifiez si le joueur fait partie de la partie
-      console.log(playerId);
       if (playerId !== game.player1 && playerId !== game.player2) {
         notAutorizedDeleteGame = i18n.__({ phrase: 'game.notAutorizedDeleteGame', locale: req.locale });
         return res
@@ -190,7 +201,19 @@ module.exports = {
       });
       delete activeGames[gameId];
       gameEnded = i18n.__({ phrase: 'game.gameEnded', locale: req.locale });
-      res.json(gameEnded);
+      const response = {
+        message: gameEnded,
+        _links: {
+          self: {
+            href: `/games`,
+          },
+          createGame: {
+            href: `/games`,
+            method: "POST",
+          },
+        },
+      };
+      res.json(response);
     } catch (error) {
       next(error);
     }
@@ -199,24 +222,24 @@ module.exports = {
   makeMove: async (req, res, next) => {
     try {
       const gameId = req.params.gameId; // Récupérez gameId à partir des paramètres de la requête
-
+  
       const playerId = req.body.playerId; // Récupérez playerId à partir du corps de la requête
-
+  
       const move = req.body.move; // Récupérez le mouvement à partir du corps de la requête
-
+  
       // Recherchez la partie par son ID
-
+  
       const game = await Game.findByPk(gameId);
-
+  
       // Si la partie n'existe pas, retournez une erreur
-
+  
       if (!game) {
         gameMakeMoveNotFound = i18n.__({ phrase: 'game.gameMakeMoveNotFound', locale: req.locale });
         return res
           .status(404)
           .json(gameMakeMoveNotFound);
       }
-
+  
       // Si le joueur n'est pas un joueur de cette partie, vous ne pouvez pas jouer
       if (playerId !== game.player1 && playerId !== game.player2) {
         gameNotAPlayer = i18n.__({ phrase: 'game.gameNotAPlayer', locale: req.locale });
@@ -224,29 +247,28 @@ module.exports = {
           .status(403)
           .json(gameNotAPlayer);
       }
-
+  
       // S'il n'y a pas de joueur 2, vous ne pouvez pas jouer
       if (!game.player2) {
         waitingAnotherPlayer = i18n.__({ phrase: 'game.waitingAnotherPlayer', locale: req.locale });
         return res.status(403).json(waitingAnotherPlayer);
       }
-
-
+  
       // Vérifiez si c'est le tour du joueur
-
+  
       if (game.currentTurn !== playerId) {
         gameNotYourTurn = i18n.__({ phrase: 'game.gameNotYourTurn', locale: req.locale });
         console.log(game.currentTurn);
         return res.status(403).json(gameNotYourTurn);
       }
-
+  
       // Vérifier si la case est déjà remplie
-
+  
       if (game.board[move] !== " ") {
         moveAlreadyMade = i18n.__({ phrase: 'game.moveAlreadyMade', locale: req.locale });
         return res.status(403).json(moveAlreadyMade);
       }
-
+  
       // Mettez à jour le plateau de jeu
       const board = game.board;
       board[move] = playerId === game.player1 ? "X" : "O";
@@ -262,13 +284,25 @@ module.exports = {
           }
         );
         winnerFound = i18n.__({ phrase: 'game.winner', locale: req.locale });
-        res.json(winnerFound);
+        const response = {
+          message: winnerFound,
+          _links: {
+            self: {
+              href: `/games/${gameId}`,
+            },
+            makeMove: {
+              href: `/games/${gameId}/moves`,
+              method: "POST",
+            },
+          },
+        };
+        res.json(response);
       } else {
         // Mettez à jour le tour actuel
-
+  
         game.currentTurn =
           playerId === game.player1 ? game.player2 : game.player1;
-
+  
         await Game.update(
           { board: board, currentTurn: game.currentTurn },
           {
@@ -278,7 +312,19 @@ module.exports = {
           }
         );
         moveMade = i18n.__({ phrase: 'game.moveMade', locale: req.locale });
-        res.json(moveMade);
+        const response = {
+          message: moveMade,
+          _links: {
+            self: {
+              href: `/games/${gameId}`,
+            },
+            makeMove: {
+              href: `/games/${gameId}/moves`,
+              method: "POST",
+            },
+          },
+        };
+        res.json(response);
       }
     } catch (error) {
       next(error);
