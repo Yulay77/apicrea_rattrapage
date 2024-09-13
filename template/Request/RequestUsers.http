@@ -1,11 +1,12 @@
 ### REGISTER USER 1
 POST http://localhost:5001/users/register
 Content-Type: application/json
+API-Version: v1
 
 {
-    "lastname": "Tom3",
-    "firstname": "tom3",
-    "email": "tom3@tom.com",
+    "lastname": "Tom7272",
+    "firstname": "tom2372",
+    "email": "tom757242411547@tom.com",
     "password": "Azerty123456!",
     "role": "admin"
 }
@@ -13,11 +14,13 @@ Content-Type: application/json
 ### GET USER 1
 GET http://localhost:5001/users/9788eeca-0658-4ebe-b603-f8786acac97a
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiJjNmVkZGViZS0yYWQ3LTQzN2YtOWU2ZC00OGY3YjNkM2JlNWIiLCJmdWxsTmFtZSI6InRvbTEwMCBUb20xMDAiLCJpYXQiOjE3MjYyMjU0MjB9.qU_Z0a0W22DGgKk0-aikgC_DYUmVuCQ8ewJmesE6H98
+API-Version: v2
 
 
 ### LOGIN USER 1
 POST http://localhost:5001/security/login
 Content-Type: application/json
+API-Version: v2
 
 {
     "email": "tom2@tom.com",
@@ -26,11 +29,13 @@ Content-Type: application/json
 
 ### TRY Token Bearer USER 1 (ADMIN ONLY)
 GET http://localhost:5001/users/
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiJjNmVkZGViZS0yYWQ3LTQzN2YtOWU2ZC00OGY3YjNkM2JlNWIiLCJmdWxsTmFtZSI6InRvbTEwMCBUb20xMDAiLCJpYXQiOjE3MjYyMjU0MjB9.qU_Z0a0W22DGgKk0-aikgC_DYUmVuCQ8ewJmesE6H98
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiIyMmM0MDU4MS0zYjE0LTRjZjktODc5Zi00ZWQyZmI2OTI1MWMiLCJmdWxsTmFtZSI6InRvbTEwMSBUb20xMDEiLCJpYXQiOjE3MjYwODgzNjl9.bOjKEAe523hmKCDcRhF8f90JzzOphJUzvHY6NAkXMoQ
+API-Version: v2
 
 ### REGISTER USER 2
-POST http://localhost:5001/users
+POST http://localhost:5001/users/register
 Content-Type: application/json
+API-Version: v2
 
 {
     "lastname": "Tom101",
@@ -42,10 +47,13 @@ Content-Type: application/json
 
 ### GET USER 2
 GET http://localhost:5001/users/22c40581-3b14-4cf9-879f-4ed2fb69251c
+Content-Type: application/json
+API-Version: v2
 
 ### LOGIN USER 2
 POST http://localhost:5001/security/login
 Content-Type: application/json
+API-Version: v2
 
 {
     "email": "tom101@tom.com",
@@ -55,3 +63,4 @@ Content-Type: application/json
 ### TRY Token Bearer USER 2 (ADMIN ONLY)
 GET http://localhost:5001/users/
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiIyMmM0MDU4MS0zYjE0LTRjZjktODc5Zi00ZWQyZmI2OTI1MWMiLCJmdWxsTmFtZSI6InRvbTEwMSBUb20xMDEiLCJpYXQiOjE3MjYwODgzNjl9.bOjKEAe523hmKCDcRhF8f90JzzOphJUzvHY6NAkXMoQ
+API-Version: v2

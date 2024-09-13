@@ -3,14 +3,15 @@ const UserController = require("../controllers/users");
 const router = new Router();
 const checkAuth = require("../middlewares/checkAuth"); // Authenticates the user
 const checkRole = require("../middlewares/checkRole"); // Checks the user's role
+const apiVersion = require("../middlewares/checkVersion");
 
 // Collection routes
-router.get("", checkAuth, checkRole("admin"), UserController.cget);
-router.post("/register", UserController.register);
+router.get("", checkAuth, apiVersion, checkRole("admin"), UserController.cget);
+router.post("/register", apiVersion, UserController.register);
 // Item routes
-router.get("/:id", checkAuth, UserController.iget);
-router.patch("/:id", checkAuth, UserController.patch);
-router.put("/:id", checkAuth, UserController.put);
-router.delete("/:id", checkAuth, UserController.delete);
+router.get("/:id", checkAuth, apiVersion, UserController.iget);
+router.patch("/:id", checkAuth, apiVersion, UserController.patch);
+router.put("/:id", checkAuth, apiVersion, UserController.put);
+router.delete("/:id", checkAuth, apiVersion, UserController.delete);
 
 module.exports = router;

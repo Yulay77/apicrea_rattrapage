@@ -4,9 +4,10 @@ const express = require("express");
 const router = express.Router();
 const GameController = require("../controllers/game"); // Assurez-vous d'avoir un contrôleur de jeu approprié
 const translationMiddleware = require("../middlewares/traduction");
+const apiVersion = require("../middlewares/checkVersion");
 
 // Créer une nouvelle partie
-router.post("/create", translationMiddleware, checkAuth, (req, res, next) => {
+router.post("/create", checkAuth, apiVersion, translationMiddleware, (req, res, next) => {
   GameController.createGame(req, res, (err, game) => {
     if (err) {
       next(err);
@@ -27,7 +28,7 @@ router.post("/create", translationMiddleware, checkAuth, (req, res, next) => {
 });
 
 // Rejoindre une partie existante
-router.post("/join/:gameId",/* middlewares */ translationMiddleware, checkAuth, (req, res, next) => {
+router.post("/join/:gameId",checkAuth, apiVersion, translationMiddleware, (req, res, next) => {
   GameController.joinGame(req, res, (err, game) => {
     if (err) {
       next(err);
@@ -46,8 +47,8 @@ router.post("/join/:gameId",/* middlewares */ translationMiddleware, checkAuth, 
   });
 });
 
-// Item route : GET : fetch an user
-router.get("", /* middlewares */ translationMiddleware, checkAuth, (req, res, next) => {
+// Item route : GET : get all games
+router.get("",checkAuth, apiVersion, translationMiddleware, (req, res, next) => {
   GameController.getGame(req, res, (err, games) => {
     if (err) {
       next(err);
@@ -64,7 +65,7 @@ router.get("", /* middlewares */ translationMiddleware, checkAuth, (req, res, ne
 });
 
 // Item route : DELETE ALL : delete all games
-router.delete("/delete", translationMiddleware, (req, res, next) => {
+router.delete("/delete", apiVersion, translationMiddleware, (req, res, next) => {
     GameController.deleteAll(req, res, (err, data) => {
       if (err) {
         next(err);
@@ -82,7 +83,7 @@ router.delete("/delete", translationMiddleware, (req, res, next) => {
   });
   
   // Item route : DELETE : delete a game
-  router.delete("/end/:gameId", translationMiddleware, (req, res, next) => {
+  router.delete("/end/:gameId", apiVersion, translationMiddleware, (req, res, next) => {
     GameController.deleteOne(req, res, (err, data) => {
       if (err) {
         next(err);
@@ -100,7 +101,7 @@ router.delete("/delete", translationMiddleware, (req, res, next) => {
   });
   
   // Jouer 
-  router.post("/play/:gameId", translationMiddleware, checkAuth, (req, res, next) => {
+  router.post("/play/:gameId", checkAuth, apiVersion, translationMiddleware,  (req, res, next) => {
     GameController.makeMove(req, res, (err, game) => {
       if (err) {
         next(err);
