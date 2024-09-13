@@ -1,20 +1,16 @@
 const { Router } = require("express");
 const UserController = require("../controllers/users");
 const router = new Router();
-const checkAuth = require("../middlewares/checkAuth");
-const checkRole = require("../middlewares/checkRole");
+const checkAuth = require("../middlewares/checkAuth"); // Authenticates the user
+const checkRole = require("../middlewares/checkRole"); // Checks the user's role
 
-// Collection route : GET : list users
+// Collection routes
 router.get("", checkAuth, checkRole("admin"), UserController.cget);
-// Collection route : POST : create an user
-router.post("", /* middlewares */ UserController.post);
+router.post("/register", UserController.register);
+// Item routes
+router.get("/:id", checkAuth, UserController.iget);
+router.patch("/:id", checkAuth, UserController.patch);
+router.put("/:id", checkAuth, UserController.put);
+router.delete("/:id", checkAuth, UserController.delete);
 
-// Item route : GET : fetch an user
-router.get("/:id", /* middlewares */ UserController.iget);
-// Item route : PATCH : modify an user
-router.patch("/:id", /* middlewares */ UserController.patch);
-// Item route : PUT : replace an user
-router.put("/:id", /* middlewares */ UserController.put);
-// Item route : DELETE : delete an user
-router.delete("/:id", /* middlewares */ UserController.delete);
 module.exports = router;
