@@ -1,6 +1,6 @@
 const restrictedRoutes = {
   v1: {
-    get: [(path) => path.startsWith('/game') || path === '/',],
+    get: [(path) => path.startsWith('/game') || path.startsWith('/all'),],
     post: [(path) => path.startsWith('/game/') || path === '/create' || path.startsWith('/play/') || path.startsWith('/join/'),],
     delete: [(path) => path.startsWith('/game/end/') || path.startsWith('/game/delete') || path.startsWith('/game/') || path.startsWith('/')],
   },

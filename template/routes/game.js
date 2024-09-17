@@ -48,7 +48,7 @@ router.post("/join/:gameId",checkAuth, apiVersion, translationMiddleware, (req, 
 });
 
 // Item route : GET : get all games
-router.get("",checkAuth, apiVersion, translationMiddleware, (req, res, next) => {
+router.get("/all",checkAuth, apiVersion, translationMiddleware, (req, res, next) => {
   GameController.getGame(req, res, (err, games) => {
     if (err) {
       next(err);

@@ -9,9 +9,9 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiIzZmQyM
     "creatorId":"3fd21d58-516f-4323-9da0-998f5b9180fc"
 }
 
-### Voir les parties en cours + Hateoas //////////PAS MARCHE POUR VERSIONNING
-GET http://localhost:5001/game
-API-Version: v2
+### Voir les parties en cours + Hateoas
+GET http://localhost:5001/game/all
+API-Version: v1
 Accept-Language: en
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiIzZmQyMWQ1OC01MTZmLTQzMjMtOWRhMC05OThmNWI5MTgwZmMiLCJmdWxsTmFtZSI6InRvbTEwMCBUb20xMDAiLCJpYXQiOjE3MjYwODgzMjJ9.fR0UzLrGID27KxmpTj9Jyhk7wQVYb8cKNAInfwBn40k
 
