@@ -5,8 +5,8 @@ const restrictedRoutes = {
     delete: [(path) => path.startsWith('/game/end/') || path.startsWith('/game/delete') || path.startsWith('/game/') || path.startsWith('/')],
   },
   v2: {
-    post: [(path) => path.startsWith('/users/register') || path === 'security/login' || path === '/',],
-    get: [(path) => path.startsWith('/users/') || path === '/',],
+    post: [(path) => path.startsWith('/users') || path.startsWith('/security/login') || path.startsWith('/register') || path.startsWith('/'),],
+    get: [(path) => path.startsWith('/users/') || path.startsWith('/'),],
   }
 };
 

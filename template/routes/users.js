@@ -7,7 +7,7 @@ const apiVersion = require("../middlewares/checkVersion");
 
 // Collection routes
 router.get("", checkAuth, apiVersion, checkRole("admin"), UserController.cget);
-router.post("/register", UserController.register);
+router.post("/register", apiVersion, UserController.register);
 // Item routes
 router.get("/:id", checkAuth, apiVersion, UserController.iget);
 router.patch("/:id", checkAuth, apiVersion, UserController.patch);
