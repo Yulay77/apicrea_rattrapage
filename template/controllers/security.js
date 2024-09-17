@@ -2,7 +2,6 @@
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 const { User } = require("../models");
-
 module.exports = {
   login: async (req, res, next) => {
     const { email, password } = req.body;
@@ -25,6 +24,13 @@ module.exports = {
       process.env.JWT_SECRET,
       {}
     );
-    res.json({ token });
+    res.json({
+      token,
+      _links: {
+        self: { href: `/security/login`, method: "POST" },
+        profile: { href: `/users/${user.id}`, method: "GET" },
+        games: { href: `/games`, method: "GET" },
+      },
+    });
   },
 };
