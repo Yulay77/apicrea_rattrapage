@@ -61,6 +61,6 @@ API-Version: v2
 }
 
 ### TRY Token Bearer USER 2 (ADMIN ONLY)
-GET http://localhost:5001/users/
+GET http://localhost:5001/users/everyone
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiIyMmM0MDU4MS0zYjE0LTRjZjktODc5Zi00ZWQyZmI2OTI1MWMiLCJmdWxsTmFtZSI6InRvbTEwMSBUb20xMDEiLCJpYXQiOjE3MjYwODgzNjl9.bOjKEAe523hmKCDcRhF8f90JzzOphJUzvHY6NAkXMoQ
 API-Version: v2

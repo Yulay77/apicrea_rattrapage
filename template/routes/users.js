@@ -6,7 +6,7 @@ const checkRole = require("../middlewares/checkRole"); // Checks the user's role
 const apiVersion = require("../middlewares/checkVersion");
 
 // Collection routes
-router.get("", checkAuth, apiVersion, checkRole("admin"), UserController.cget);
+router.get("/everyone", checkAuth, apiVersion, checkRole("admin"), UserController.cget);
 router.post("/register", apiVersion, UserController.register);
 // Item routes
 router.get("/:id", checkAuth, apiVersion, UserController.iget);

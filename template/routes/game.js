@@ -64,8 +64,29 @@ router.get("/all",checkAuth, apiVersion, translationMiddleware, (req, res, next)
   });
 });
 
+// Item route : GET : get turn
+router.get("/turn/:gameId", checkAuth, apiVersion, translationMiddleware, (req, res, next) => {
+  GameController.getTurn(req, res, (err, game) => {
+    if (err) {
+      next(err);
+    } else {
+      res.json({
+        ...game,
+        _links: {
+          self: { href: `/games/${game.id}` },
+          createGame: { href: `/games`, method: "POST" },
+          joinGame: { href: `/games/${game.id}/join`, method: "PUT" },
+          deleteGame: { href: `/games/${game.id}/end`, method: "DELETE" },
+          play: { href: `/games/${game.id}/play`, method: "POST" }
+        }
+      });
+    }
+  });
+});
+
+
 // Item route : DELETE ALL : delete all games
-router.delete("/delete", apiVersion, translationMiddleware, (req, res, next) => {
+router.delete("/delete", checkAuth, apiVersion, translationMiddleware, (req, res, next) => {
     GameController.deleteAll(req, res, (err, data) => {
       if (err) {
         next(err);

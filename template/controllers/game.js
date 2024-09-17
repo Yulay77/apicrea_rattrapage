@@ -36,6 +36,30 @@ module.exports = {
       next(error);
     }
   },
+  // Ajoutez une nouvelle route pour afficher le tour actuel
+getTurn: async (req, res, next) => {
+  try {
+    const gameId = req.params.gameId;
+    const game = await Game.findByPk(gameId);
+    if (!game) {
+      gameNotFound = i18n.__({ phrase: 'game.gameNotFound', locale: req.locale });
+      return res
+        .status(404)
+        .json(gameNotFound);
+    }
+    const currentTurn = game.currentTurn;
+    const player1 = game.player1;
+    const player2 = game.player2;
+    const turnInfo = {
+      currentTurn: currentTurn,
+      player1: player1,
+      player2: player2,
+    };
+    res.json(turnInfo);
+  } catch (error) {
+    next(error);
+  }
+},
   createGame: async (req, res, next) => {
     try {
       const creatorId = req.body.creatorId;
