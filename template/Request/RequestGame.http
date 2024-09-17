@@ -9,9 +9,9 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiIzZmQyM
     "creatorId":"3fd21d58-516f-4323-9da0-998f5b9180fc"
 }
 
-### Voir les parties en cours + Hateoas
+### Voir les parties en cours + Hateoas //////////PAS MARCHE POUR VERSIONNING
 GET http://localhost:5001/game
-API-Version: v1
+API-Version: v2
 Accept-Language: en
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiIzZmQyMWQ1OC01MTZmLTQzMjMtOWRhMC05OThmNWI5MTgwZmMiLCJmdWxsTmFtZSI6InRvbTEwMCBUb20xMDAiLCJpYXQiOjE3MjYwODgzMjJ9.fR0UzLrGID27KxmpTj9Jyhk7wQVYb8cKNAInfwBn40k
 
@@ -24,7 +24,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiIzZmQyM
 
 
 ### Rejoindre une partie (id de la game dans l'url) + Hateoas
-POST http://localhost:5001/game/join/4e8043d1-0cfe-44e6-9995-dd351ac4a3cc
+POST http://localhost:5001/game/join/9248022f-1e1a-4477-9261-885c1eb1d039
 Content-Type: application/json 
 API-Version: v1
 Accept-Language: en
@@ -36,7 +36,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiIwNzI2O
 
 
 ### Make Move (id game + user 1) 
-POST http://localhost:5001/game/play/4e8043d1-0cfe-44e6-9995-dd351ac4a3cc
+POST http://localhost:5001/game/play/9248022f-1e1a-4477-9261-885c1eb1d039
 Content-Type: application/json
 API-Version: v1
 Accept-Language: en
@@ -48,7 +48,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiJlMjA0Y
 }
 
 ### Make Move (id game + user 2)
-POST http://localhost:5001/game/play/4e8043d1-0cfe-44e6-9995-dd351ac4a3cc
+POST http://localhost:5001/game/play/9248022f-1e1a-4477-9261-885c1eb1d039
 Content-Type: application/json
 API-Version: v1
 Accept-Language: en
@@ -60,7 +60,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiIwNzI2O
 }
 
 ### Terminer une partie (id de la game dans l'url)
-DELETE http://localhost:5001/game/end/4e8043d1-0cfe-44e6-9995-dd351ac4a3cc
+DELETE http://localhost:5001/game/end/9248022f-1e1a-4477-9261-885c1eb1d039
 Content-Type: application/json
 API-Version: v1
 Accept-Language: en

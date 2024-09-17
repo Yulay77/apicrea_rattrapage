@@ -1,7 +1,6 @@
 ### REGISTER USER 1
 POST http://localhost:5001/users/register
 Content-Type: application/json
-API-Version: v1
 
 {
     "lastname": "Tom7272",
